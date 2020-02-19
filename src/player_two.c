@@ -24,6 +24,6 @@ int player_two(int first_pid)
     }
     usleep(100);
     kill(first_pid, SIGUSR1);
-    fae_put("\nsuccessfully connected\n");
+    fae_put("successfully connected\n");
     return first_pid;
 }
