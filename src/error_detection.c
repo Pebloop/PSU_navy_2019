@@ -48,11 +48,6 @@ int is_incorrect_file(char *filepath)
         if (is_incorrect_line(file_descr, i))
             return (1);
     }
-    line = get_next_line(file_descr);
-    if (line != NULL) {
-        free(line);
-        return (1);
-    }
     close(file_descr);
     return (0);
 }
