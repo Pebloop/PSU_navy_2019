@@ -28,7 +28,6 @@ int player_one(void)
     *detect_signal1() = 0;
     usleep(100);
     kill(second_pid, SIGUSR1);
-    usleep(100);
     while(second_pid != *detect_signal1()) {}
     fae_put("\nenemy connected\n");
     return second_pid;
