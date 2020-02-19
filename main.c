@@ -7,10 +7,24 @@
 
 #include "fae.h"
 #include "navy.h"
+#include <sys/types.h>
+#include <unistd.h>
+
 
 int main(int argc, char **argv)
 {
+    int rtv = 0;
+
     if (argc > 1 && !fae_strcmp(argv[1], "-h")) {
         display_usage();
+        return 0;
     }
+    //if (detect_errors(argc, argv))
+    //    return 84;
+    fae_put("my_pid: %d\n", getpid());
+    rtv = (argc == 2) ? player_one() : rtv;
+    rtv = (argc == 3) ? player_two(fae_stoi(argv[1], 0)) : rtv;
+    if (!rtv)
+        return 84;
+    return navy();
 }

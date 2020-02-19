@@ -5,7 +5,10 @@
 ** Detects errors in the arguments passed to the program
 */
 
+#include <sys/stat.h>
+#include <fcntl.h>
 #include "navy.h"
+#include "fae.h"
 
 int detect_errors(int argc, char **argv)
 {
@@ -23,7 +26,7 @@ int is_incorrect_pid(char *arg)
     char *end = 0;
     int pid = 0;
 
-    pid = fae_stoi(argv[1], &end);
+    pid = fae_stoi(arg, &end);
     if (*end != 0 || pid <= 0)
         return (1);
     return (0);

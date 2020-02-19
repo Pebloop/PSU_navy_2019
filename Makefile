@@ -1,5 +1,10 @@
-SRC	=	src/get_next_line.c	\
-		src/display_usage.c	\
+SRC	=	src/get_next_line.c		\
+		src/error_detection.c	\
+		src/display_usage.c		\
+		src/detect_signal.c		\
+		src/player_one.c		\
+		src/player_two.c		\
+		src/navy.c				\
 
 MAIN =	main.c
 
