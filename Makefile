@@ -7,6 +7,10 @@ SRC	=	src/get_next_line.c		\
 		src/player_one.c		\
 		src/player_two.c		\
 		src/navy.c				\
+		src/display_grid.c		\
+		src/display_board.c		\
+		src/you_play.c			\
+		src/they_play.c			\
 
 MAIN =	main.c
 

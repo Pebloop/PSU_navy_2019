@@ -49,4 +49,10 @@ int player_two(int first_pid);
 //navy.c
 int navy(void);
 
+//display_grid.c
+void display_grid(cell_t **grid);
+
+//display_board
+display_board(cell_t **player, cell_t **ennemy);
+
 #endif /*NAVY_H*/
