@@ -1,4 +1,5 @@
 SRC	=	src/get_next_line.c	\
+		src/display_usage.c	\
 
 MAIN =	main.c
 
