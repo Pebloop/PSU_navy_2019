@@ -14,13 +14,16 @@
 int main(int argc, char **argv)
 {
     int rtv = 0;
+    cell_t grid[8][8];
 
     if (argc > 1 && !fae_strcmp(argv[1], "-h")) {
         display_usage();
         return 0;
     }
-    //if (detect_errors(argc, argv))
-    //    return 84;
+    if (detect_errors(argc, argv))
+        return 84;
+    if (get_grid(grid, argv[argc - 1]) == 84)
+        return 84;
     fae_put("my_pid: %d\n", getpid());
     rtv = (argc == 2) ? player_one() : rtv;
     rtv = (argc == 3) ? player_two(fae_stoi(argv[1], 0)) : rtv;

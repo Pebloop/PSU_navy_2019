@@ -10,13 +10,29 @@
 
 #include <signal.h>
 
+typedef enum cell {
+    N_A, HIT, MISS, TWO, THREE, FOUR, FIVE
+} cell_t;
+
+// maths_tools.c
+int my_abs(int nb);
+int my_min(int nb1, int nb2);
+
 // display_usage.c
 void display_usage(void);
 
 // error_detection.c
 int detect_errors(int argc, char **argv);
 int is_incorrect_pid(char *arg);
-int errors_in_file(char *filepath);
+int is_incorrect_file(char *filepath);
+int is_incorrect_line(int file_descr, int line_nb);
+int is_incorrect_coords(char *str);
+
+// get_grid.c
+int get_grid(cell_t (*grid)[8], char *filepath);
+int add_boat_to_grid(cell_t (*grid)[8], int file_descr);
+int add_boat_to_line(int line, int length, cell_t (*grid)[8], char *str);
+int add_boat_to_col(int col, int length, cell_t (*grid)[8], char *str);
 
 // display_usage.c
 int *detect_signal1(void);

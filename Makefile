@@ -1,6 +1,8 @@
 SRC	=	src/get_next_line.c		\
+		src/math_tools.c 		\
 		src/error_detection.c	\
 		src/display_usage.c		\
+		src/get_grid.c 			\
 		src/detect_signal.c		\
 		src/player_one.c		\
 		src/player_two.c		\
