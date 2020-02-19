@@ -13,6 +13,6 @@ void display_board(cell_t (*player)[8], cell_t (*ennemy)[8])
     fae_putstr("my positions:\n");
     display_grid(player);
     fae_putstr("\nenemy's positions:\n");
-    display_grid(player);
+    display_grid(ennemy);
     fae_putchar('\n');
 }

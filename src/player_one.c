@@ -22,9 +22,8 @@ int player_one(void)
     usr1.sa_sigaction = &receive_usr1;
     fae_put("waiting for enemy connection...\n");
     sigaction(SIGUSR1, &usr1, NULL);
-    while(!second_pid) {
+    while(!second_pid)
         second_pid = *detect_signal1();
-    }
     *detect_signal1() = 0;
     usleep(100);
     kill(second_pid, SIGUSR1);

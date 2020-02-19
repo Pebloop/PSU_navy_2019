@@ -18,6 +18,7 @@ int player_two(int first_pid)
     struct sigaction usr1;
 
     usr1.sa_sigaction = &receive_usr1;
+    usleep(100);
     kill(first_pid, SIGUSR1);
     sigaction(SIGUSR1, &usr1, NULL);
     while(*detect_signal1() == 0) {

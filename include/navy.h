@@ -40,19 +40,25 @@ int *detect_signal2(void);
 void receive_usr1(int sig, siginfo_t *siginfo, void *context);
 void receive_usr2(int sig, siginfo_t *siginfo, void *context);
 
-//player_one.c
+// player_one.c
 int player_one(void);
 
-//player_two.c
+// player_two.c
 int player_two(int first_pid);
 
-//navy.c
+// navy.c
 int navy(int ennemy_pid, cell_t (*player)[8], int turn);
 
-//display_grid.c
+// display_grid.c
 void display_grid(cell_t (*grid)[8]);
 
-//display_board
+// display_board
 void display_board(cell_t (*player)[8], cell_t (*ennemy)[8]);
+
+// you_play.c
+int you_play(void);
+int get_input(char **str);
+
+// they_play.c
 
 #endif /*NAVY_H*/
