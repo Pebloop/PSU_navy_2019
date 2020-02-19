@@ -22,6 +22,7 @@ int player_two(int first_pid)
     sigaction(SIGUSR1, &usr1, NULL);
     while(*detect_signal1() == 0) {
     }
+    usleep(100);
     kill(first_pid, SIGUSR1);
     fae_put("\nsuccessfully connected\n");
     return first_pid;

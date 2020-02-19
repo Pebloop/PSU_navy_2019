@@ -12,6 +12,7 @@
 #include <string.h>
 #include "fae.h"
 #include "navy.h"
+#include <time.h>
 
 int player_one(void)
 {
@@ -25,10 +26,10 @@ int player_one(void)
         second_pid = *detect_signal1();
     }
     *detect_signal1() = 0;
+    usleep(100);
     kill(second_pid, SIGUSR1);
-    while(second_pid != *detect_signal1()) {
-        fae_put("%d : %d\n", second_pid, *detect_signal1());
-    }
+    usleep(100);
+    while(second_pid != *detect_signal1()) {}
     fae_put("\nenemy connected\n");
     return second_pid;
 }
