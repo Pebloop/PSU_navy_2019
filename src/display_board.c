@@ -5,7 +5,10 @@
 ** display the board game
 */
 
-void display_board(cell_t **player, cell_t **ennemy)
+#include "navy.h"
+#include "fae.h"
+
+void display_board(cell_t (*player)[8], cell_t (*ennemy)[8])
 {
     fae_putstr("my positions:\n");
     display_grid(player);

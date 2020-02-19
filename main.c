@@ -30,5 +30,5 @@ int main(int argc, char **argv)
     ennemy_pid  = (argc == 3) ? player_two(fae_stoi(argv[1], 0)) : ennemy_pid;
     if (!rtv)
         return 84;
-    return navy(ennemy_pid, grid);
+    return navy(ennemy_pid, grid, (argc == 2) ? 1 : 0);
 }

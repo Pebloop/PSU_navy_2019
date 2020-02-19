@@ -47,12 +47,12 @@ int player_one(void);
 int player_two(int first_pid);
 
 //navy.c
-int navy(void);
+int navy(int ennemy_pid, cell_t (*player)[8], int turn);
 
 //display_grid.c
-void display_grid(cell_t **grid);
+void display_grid(cell_t (*grid)[8]);
 
 //display_board
-display_board(cell_t **player, cell_t **ennemy);
+void display_board(cell_t (*player)[8], cell_t (*ennemy)[8]);
 
 #endif /*NAVY_H*/

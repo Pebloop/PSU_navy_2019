@@ -5,7 +5,10 @@
 ** navy
 */
 
-int navy(int ennemy_pid, cell_t **player, int turn)
+#include "fae.h"
+#include "navy.h"
+
+int navy(int ennemy_pid, cell_t (*player)[8], int turn)
 {
     cell_t ennemy[8][8] = {N_A};
     int status = 0;

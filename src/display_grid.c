@@ -7,10 +7,11 @@
 */
 
 #include "fae.h"
+#include "navy.h"
 
 const char cell_to_char[7] = {'.', 'x', 'o', '2', '3', '4', '5'};
 
-static void display_grid_line(int i, cell_t **grid)
+static void display_grid_line(int i, cell_t (*grid)[8])
 {
     for (int y = 0; y < 8; y++) {
         if (y != 0)
@@ -20,7 +21,7 @@ static void display_grid_line(int i, cell_t **grid)
     fae_putchar('\n');
 }
 
-void display_grid(cell_t **grid)
+void display_grid(cell_t (*grid)[8])
 {
     fae_put(" |A B C D E F G H\n");
     fae_put("-+---------------\n");
