@@ -16,18 +16,18 @@
 
 int player_one(void)
 {
-    struct sigaction usr1;
     int second_pid = 0;
 
-    usr1.sa_sigaction = &receive_usr1;
     fae_put("waiting for enemy connection...\n");
-    sigaction(SIGUSR1, &usr1, NULL);
-    while(!second_pid)
-        second_pid = *detect_signal1();
+    while(!second_pid) {
+        pause();
+        second_pid = *(detect_signal1());
+    }
     *detect_signal1() = 0;
     usleep(100);
     kill(second_pid, SIGUSR1);
-    while(second_pid != *detect_signal1()) {}
-    fae_put("\nenemy connected\n");
+    while(second_pid != *detect_signal1())
+        pause();
+    fae_put("\nenemy connected\n\n");
     return second_pid;
 }

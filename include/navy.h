@@ -29,10 +29,10 @@ int is_incorrect_line(int file_descr, int line_nb);
 int is_incorrect_coords(char *str);
 
 // get_grid.c
-int get_grid(cell_t (*grid)[8], char *filepath);
-int add_boat_to_grid(cell_t (*grid)[8], int file_descr);
-int add_boat_to_line(int line, int length, cell_t (*grid)[8], char *str);
-int add_boat_to_col(int col, int length, cell_t (*grid)[8], char *str);
+int get_grid(cell_t (*grid)[8][8], char *filepath);
+int add_boat_to_grid(cell_t (*grid)[8][8], int file_descr);
+int add_boat_to_line(int line, int length, cell_t (*grid)[8][8], char *str);
+int add_boat_to_col(int col, int length, cell_t (*grid)[8][8], char *str);
 
 // display_usage.c
 int *detect_signal1(void);
@@ -60,5 +60,6 @@ int you_play(void);
 int get_input(char **str);
 
 // they_play.c
+int they_play(void);
 
 #endif /*NAVY_H*/

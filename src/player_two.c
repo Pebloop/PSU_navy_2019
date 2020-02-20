@@ -15,16 +15,13 @@
 
 int player_two(int first_pid)
 {
-    struct sigaction usr1;
-
-    usr1.sa_sigaction = &receive_usr1;
     usleep(100);
     kill(first_pid, SIGUSR1);
-    sigaction(SIGUSR1, &usr1, NULL);
     while(*detect_signal1() == 0) {
+        pause();
     }
     usleep(100);
     kill(first_pid, SIGUSR1);
-    fae_put("successfully connected\n");
+    fae_put("successfully connected\n\n");
     return first_pid;
 }

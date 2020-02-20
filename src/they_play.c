@@ -10,5 +10,7 @@
 
 int they_play(void)
 {
+    fae_put("waiting for enemy's attack...\n");
+    pause();
     return 0;
 }

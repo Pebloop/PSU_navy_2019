@@ -14,7 +14,7 @@
 #include "fae.h"
 #include "get_next_line.h"
 
-int get_grid(cell_t (*grid)[8], char *filepath)
+int get_grid(cell_t (*grid)[8][8], char *filepath)
 {
     int file_descr = 0;
     char *line = NULL;
@@ -24,7 +24,7 @@ int get_grid(cell_t (*grid)[8], char *filepath)
         return (84);
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++)
-            grid[i][j] = N_A;
+            (*grid)[i][j] = N_A;
     }
     for (int i = 0; i < 4; i++) {
         if (add_boat_to_grid(grid, file_descr) == 84)
@@ -34,7 +34,7 @@ int get_grid(cell_t (*grid)[8], char *filepath)
     return (0);
 }
 
-int add_boat_to_grid(cell_t (*grid)[8], int file_descr)
+int add_boat_to_grid(cell_t (*grid)[8][8], int file_descr)
 {
     char *str = NULL;
     int line = -1;
@@ -54,28 +54,28 @@ int add_boat_to_grid(cell_t (*grid)[8], int file_descr)
     return (0);
 }
 
-int add_boat_to_col(int col, int length, cell_t (*grid)[8], char *str)
+int add_boat_to_col(int col, int length, cell_t (*grid)[8][8], char *str)
 {
     int start = 0;
 
     start = my_min(str[3], str[6]) - 48 - 1;
     for (int i = 0; i < length; i++) {
-        if (grid[i + start][col] != N_A)
+        if ((*grid)[i + start][col] != N_A)
             return (84);
-        grid[i + start][col] = length + 1;
+        (*grid)[i + start][col] = length + 1;
     }
     return (0);
 }
 
-int add_boat_to_line(int line, int length, cell_t (*grid)[8], char *str)
+int add_boat_to_line(int line, int length, cell_t (*grid)[8][8], char *str)
 {
     int start = 0;
 
     start = my_min(str[2], str[5]) - 65;
     for (int i = 0; i < length; i++) {
-        if (grid[line][i + start] != N_A)
+        if ((*grid)[line][i + start] != N_A)
             return (84);
-        grid[line][i + start] = length + 1;
+        (*grid)[line][i + start] = length + 1;
     }
     return (0);
 }
