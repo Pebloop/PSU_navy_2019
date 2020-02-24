@@ -12,6 +12,8 @@ SRC	=	src/get_next_line.c						\
 		src/you_play.c							\
 		src/they_play.c							\
 		src/binary_conversion/deci_to_base.c	\
+		src/binary_conversion/my_getnbr_base.c	\
+		src/get_coordinate.c					\
 
 MAIN =	main.c
 
