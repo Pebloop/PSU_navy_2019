@@ -29,9 +29,18 @@ int navy(cell_t (*player)[8], int turn, int second_pid)
     return status - 1;
 }
 
-int detect_victory()
+int detect_victory(cell_t (*player)[8])
 {
-    // TODO
+    int hits = 0;
+
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            hits += (player[i][j] == HIT);
+        }
+    }
+    if (hits < 8)
+        return (0);
+    return (1);
 }
 
 void display_winner(int status)
