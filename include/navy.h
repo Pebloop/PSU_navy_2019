@@ -60,6 +60,11 @@ void display_board(cell_t (*player)[8], cell_t (*ennemy)[8]);
 int you_play(void);
 int get_input(char **str);
 
+// send_coordinates.c
+void send_coordinates(char *input, int second_pid);
+void convert_to_binary(char *input, char binary[]);
+void send_bit(char bit, int second_pid);
+
 // they_play.c
 int they_play(void);
 

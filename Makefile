@@ -10,6 +10,7 @@ SRC	=	src/get_next_line.c						\
 		src/display_grid.c						\
 		src/display_board.c						\
 		src/you_play.c							\
+		src/send_coordinates.c 					\
 		src/they_play.c							\
 		src/binary_conversion/deci_to_base.c	\
 
