@@ -17,7 +17,7 @@ int player_two(int first_pid)
 {
     usleep(100);
     kill(first_pid, SIGUSR1);
-    while(*detect_signal1() == 0) {
+    while (*detect_signal1() == 0) {
         pause();
     }
     usleep(100);

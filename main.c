@@ -10,7 +10,6 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-
 void set_receiver(void)
 {
     struct sigaction usr1;
