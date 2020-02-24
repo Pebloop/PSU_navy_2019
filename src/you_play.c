@@ -19,7 +19,7 @@ int you_play(void)
 
     if (get_input(&input) == 84)
         return (84);
-    // Faire quelque chose de input
+    send_coordinates(input, *ennemy_pid());
     free(input);
     return (0);
 }
@@ -33,7 +33,7 @@ int get_input(char **str)
         *str = get_next_line(0);
         if (*str == NULL)
             return (84);
-        if (!is_incorrect_coords(*str) && ((*str)[3] == ' ' || (*str)[3] == 0))
+        if (!is_incorrect_coords(*str) && ((*str)[2] == ' ' || (*str)[2] == 0))
             correct_input = 1;
         else {
             fae_put("wrong position\n");

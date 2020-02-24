@@ -18,6 +18,19 @@ void send_coordinates(char *input, int second_pid)
         send_bit(binary[i], second_pid);
 }
 
+char *set_to_format(char *str)
+{
+    char *new_format = malloc(sizeof(char) * 4);
+
+    new_format[3] = '\0';
+    for (int i = 0; i < 3; i++)
+        new_format[i] = '0';
+    for (int i = 2; i >= 0 && str[2 - i]; i--)
+        new_format[i] = str[2 - i];
+    free(str);
+    return new_format;
+}
+
 void convert_to_binary(char *input, char binary[])
 {
     char letter_dec[2] = {0};
@@ -25,10 +38,10 @@ void convert_to_binary(char *input, char binary[])
     char *letter_bin = NULL;
     char *number_bin = NULL;
 
-    letter_dec[1] = input[0] - 65;
-    letter_bin = deci_to_base(2, letter_dec);
-    number_dec[1] = input[1] - 49;
-    number_bin = deci_to_base(2, number_dec);
+    letter_bin = deci_to_base(input[0] - 'A', "01");
+    number_bin = deci_to_base(input[1] - '1', "01");
+    letter_bin = set_to_format(letter_bin);
+    number_bin = set_to_format(number_bin);
     for (int i = 0; i < 3; i++)
         binary[i] = letter_bin[i];
     for (int i = 0; i < 3; i++)
@@ -39,13 +52,16 @@ void convert_to_binary(char *input, char binary[])
 void send_bit(char bit, int second_pid)
 {
     usleep(100);
-    if (bit == 0) {
+    if (bit == '0') {
         kill(second_pid, SIGUSR1);
+        printf("%c", bit);
         while(second_pid != *detect_signal1())
             pause();
     } else {
         kill(second_pid, SIGUSR2);
+        printf("%c", bit);
         while(second_pid != *detect_signal2())
             pause();
     }
+    printf("\n");
 }

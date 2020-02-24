@@ -30,11 +30,18 @@ static char *receive_coordinate_in_deci(void)
     for (int i = 0; i < 3; i++) {
         while(!(*signal0) && !(*signal1))
             pause();
-        if (*signal0)
+        if (*signal0) {
             binary_number[i] = '0';
-        else
+            kill(*ennemy_pid(), SIGUSR1);
+        }
+        else {
             binary_number[i] = '1';
+            kill(*ennemy_pid(), SIGUSR2);
+        }
+        *signal0 = 0;
+        *signal1 = 0;
     }
+    printf("%s\n", binary_number);
     return binary_number;
 }
 

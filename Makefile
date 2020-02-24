@@ -22,7 +22,7 @@ OBJ	=	$(SRC:.c=.o)
 
 MAIN_OBJ = 	$(MAIN:.c=.o)
 
-CFLAGS = -Iinclude/ -Llib/fae/ -lfae -Llib/list/ -llist
+CFLAGS = -Iinclude/ -Llib/fae/ -lfae -Llib/list/ -llist -g3
 
 NAME =	navy
 
@@ -40,7 +40,7 @@ $(NAME): make_lib $(OBJ) $(MAIN_OBJ)
 	gcc -o $(NAME) $(MAIN_OBJ) $(OBJ) $(CFLAGS)
 
 debug: make_lib $(OBJ) $(MAIN_OBJ)
-	gcc -g3 -o $(NAME) $(MAIN_OBJ) $(OBJ) $(CFLAGS)
+	gcc -g3 -o $(DEBUG) $(MAIN_OBJ) $(OBJ) $(CFLAGS)
 
 tests_run: make_lib
 	gcc -o $(TEST) $(OBJ) $(CFLAGS)
