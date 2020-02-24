@@ -35,6 +35,7 @@ int add_boat_to_line(int line, int length, cell_t (*grid)[8][8], char *str);
 int add_boat_to_col(int col, int length, cell_t (*grid)[8][8], char *str);
 
 // display_usage.c
+int *ennemy_pid(void);
 int *detect_signal1(void);
 int *detect_signal2(void);
 void receive_usr1(int sig, siginfo_t *siginfo, void *context);
@@ -47,7 +48,7 @@ int player_one(void);
 int player_two(int first_pid);
 
 // navy.c
-int navy(int ennemy_pid, cell_t (*player)[8], int turn);
+int navy(cell_t (*player)[8], int turn);
 
 // display_grid.c
 void display_grid(cell_t (*grid)[8]);
@@ -64,6 +65,6 @@ int they_play(void);
 
 //binary conversion
 char *deci_to_base(int nbr, char const *base);
-int my_getnbr_base(char const *str, char const *base)
+int my_getnbr_base(char const *str, char const *base);
 
 #endif /*NAVY_H*/

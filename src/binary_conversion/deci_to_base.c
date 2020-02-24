@@ -31,7 +31,7 @@ char *dtb_conversion(int nbr, char const *base, char *nb, int nbr_base)
         index++;
     }
     nb[index] = '\0';
-    nb = fae_revstr(nb);
+    fae_revstr(nb);
     return nb;
 }
 

@@ -26,7 +26,7 @@ void set_receiver(void)
 int main(int argc, char **argv)
 {
     cell_t grid[8][8];
-    int ennemy_pid = 0;
+    int *pid = ennemy_pid();
 
     set_receiver();
     if (argc > 1 && !fae_strcmp(argv[1], "-h")) {
@@ -38,9 +38,9 @@ int main(int argc, char **argv)
     if (get_grid(&grid, argv[argc - 1]) == 84)
         return 84;
     fae_put("my_pid: %d\n", getpid());
-    ennemy_pid = (argc == 2) ? player_one() : ennemy_pid ;
-    ennemy_pid  = (argc == 3) ? player_two(fae_stoi(argv[1], 0)) : ennemy_pid;
-    if (!ennemy_pid)
+    *pid = (argc == 2) ? player_one() : *pid ;
+    *pid  = (argc == 3) ? player_two(fae_stoi(argv[1], 0)) : *pid;
+    if (!(*pid))
         return 84;
-    return navy(ennemy_pid, grid, (argc == 2) ? 1 : 0);
+    return navy(grid, (argc == 2) ? 1 : 0);
 }
