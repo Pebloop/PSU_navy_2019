@@ -62,4 +62,8 @@ int get_input(char **str);
 // they_play.c
 int they_play(void);
 
+//binary conversion
+char *deci_to_base(int nbr, char const *base);
+int my_getnbr_base(char const *str, char const *base)
+
 #endif /*NAVY_H*/

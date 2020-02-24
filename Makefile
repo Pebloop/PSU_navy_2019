@@ -1,16 +1,17 @@
-SRC	=	src/get_next_line.c		\
-		src/math_tools.c 		\
-		src/error_detection.c	\
-		src/display_usage.c		\
-		src/get_grid.c 			\
-		src/detect_signal.c		\
-		src/player_one.c		\
-		src/player_two.c		\
-		src/navy.c				\
-		src/display_grid.c		\
-		src/display_board.c		\
-		src/you_play.c			\
-		src/they_play.c			\
+SRC	=	src/get_next_line.c						\
+		src/math_tools.c 						\
+		src/error_detection.c					\
+		src/display_usage.c						\
+		src/get_grid.c 							\
+		src/detect_signal.c						\
+		src/player_one.c						\
+		src/player_two.c						\
+		src/navy.c								\
+		src/display_grid.c						\
+		src/display_board.c						\
+		src/you_play.c							\
+		src/they_play.c							\
+		src/binary_conversion/deci_to_base.c	\
 
 MAIN =	main.c
 
