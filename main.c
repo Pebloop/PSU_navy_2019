@@ -42,5 +42,5 @@ int main(int argc, char **argv)
     *pid  = (argc == 3) ? player_two(fae_stoi(argv[1], 0)) : *pid;
     if (!(*pid))
         return 84;
-    return navy(grid, (argc == 2) ? 1 : 0);
+    return navy(grid, (argc == 2) ? 1 : 0, *pid);
 }

@@ -48,7 +48,9 @@ int player_one(void);
 int player_two(int first_pid);
 
 // navy.c
-int navy(cell_t (*player)[8], int turn);
+int navy(cell_t (*player)[8], int turn, int second_pid);
+int detect_victory();
+void display_winner(int status);
 
 // display_grid.c
 void display_grid(cell_t (*grid)[8]);
@@ -57,8 +59,10 @@ void display_grid(cell_t (*grid)[8]);
 void display_board(cell_t (*player)[8], cell_t (*ennemy)[8]);
 
 // you_play.c
-int you_play(void);
+int you_play(cell_t (*their_board)[8], int second_pid);
 int get_input(char **str);
+int receive_result_of_strike(int second_pid);
+void update_board(cell_t (*board)[8], char *input, int hit);
 
 // send_coordinates.c
 void send_coordinates(char *input, int second_pid);
@@ -66,7 +70,9 @@ void convert_to_binary(char *input, char binary[]);
 void send_bit(char bit, int second_pid);
 
 // they_play.c
-int they_play(void);
+int they_play(cell_t (*your_board)[8], int second_pid);
+int detect_hit(cell_t (*board)[8], char *coordinates);
+void send_result_of_strike(int hit, int second_pid);
 
 //binary conversion
 char *deci_to_base(int nbr, char const *base);
