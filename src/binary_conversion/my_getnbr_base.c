@@ -61,13 +61,13 @@ int my_getnbr_base(char const *str, char const *base)
     if (str[0] == '+' || str[0] == '-') {
         if (str[0] == '-')
             sign = -1;
-        str_pos = &str[1];
+        str_pos = (char *)(&str[1]);
     } else
-        str_pos = str;
+        str_pos = (char *)(str);
     for (int c = 0; str_pos[c] != '\0'; c++)
         if (!is_base(str_pos[c], base))
             return 0;
-    count = base_to_deci(str_pos, base);
+    count = base_to_deci(str_pos, (char *)(base));
     if (sign < 0)
         count = - count;
     return count;

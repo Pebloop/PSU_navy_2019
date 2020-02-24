@@ -72,4 +72,7 @@ int they_play(void);
 char *deci_to_base(int nbr, char const *base);
 int my_getnbr_base(char const *str, char const *base);
 
+//getConversion
+char *get_coordinate(void);
+
 #endif /*NAVY_H*/
