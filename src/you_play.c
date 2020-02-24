@@ -72,7 +72,7 @@ int receive_result_of_strike(int second_pid)
 void update_board(cell_t (*board)[8], char *input, int hit)
 {
     if (hit)
-        board[input[0] - 'A'][input[1] - '1'] = HIT;
+        board[input[1] - '1'][input[0] - 'A'] = HIT;
     else
-        board[input[0] - 'A'][input[1] - '1'] = MISS;
+        board[input[1] - '1'][input[0] - 'A'] = MISS;
 }

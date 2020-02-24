@@ -31,7 +31,7 @@ int detect_hit(cell_t (*board)[8], char *coordinates)
 {
     cell_t cell = N_A;
 
-    cell = board[coordinates[0] - 'A'][coordinates[1] - '1'];
+    cell = board[coordinates[1] - '1'][coordinates[0] - 'A'];
     if (cell == N_A || cell == MISS)
         return (0);
     return (1);
