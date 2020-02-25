@@ -5,7 +5,7 @@
 ** Converts the coordinates to binary and sends them to the enemy.
 */
 
-#include <stddef.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include "navy.h"
