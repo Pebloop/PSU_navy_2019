@@ -48,14 +48,10 @@ int get_input(char **str)
 
 int receive_result_of_strike(int second_pid)
 {
-    int *signal0 = NULL;
-    int *signal1 = NULL;
+    int *signal0 = detect_signal1();
+    int *signal1 = detect_signal1();
     int hit = 0;
 
-    signal0 = detect_signal1();
-    signal1 = detect_signal2();
-    *signal0 = 0;
-    *signal1 = 0;
     while(!(*signal0) && !(*signal1))
         pause();
     usleep(100);

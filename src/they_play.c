@@ -19,7 +19,6 @@ int they_play(cell_t (*your_board)[8], int second_pid)
 
     fae_put("waiting for enemy's attack...\n");
     coordinates = get_coordinate();
-    printf("result : %s\n", coordinates);
     hit = detect_hit(your_board, coordinates);
     update_board(your_board, coordinates, hit);
     send_result_of_strike(hit, second_pid);
