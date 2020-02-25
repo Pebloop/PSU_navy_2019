@@ -43,14 +43,19 @@ int detect_hit(cell_t (*board)[8], char *coordinates)
 
 void send_result_of_strike(int hit, int second_pid)
 {
+    int *signal0 = detect_signal1();
+    int *signal1 = detect_signal2();
+
     usleep(100);
     if (hit) {
         kill(second_pid, SIGUSR2);
         while(second_pid != *detect_signal2())
             pause();
+        *signal1 = 0;
     } else {
         kill(second_pid, SIGUSR1);
         while(second_pid != *detect_signal1())
             pause();
+        *signal0 = 0;
     }
 }
