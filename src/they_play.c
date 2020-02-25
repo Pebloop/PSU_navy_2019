@@ -15,7 +15,6 @@ int they_play(void)
 
     fae_put("waiting for enemy's attack...\n");
     coordinate = get_coordinate();
-    printf("result : %s\n", coordinate);
     free(coordinate);
     return 0;
 }

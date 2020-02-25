@@ -7,26 +7,33 @@
 
 #include <stddef.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include "navy.h"
+#include "fae.h"
 
 void send_coordinates(char *input, int second_pid)
 {
     char binary[7] = {0};
 
     convert_to_binary(input, binary);
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < 6; i++)
         send_bit(binary[i], second_pid);
+    usleep(100);
 }
 
 char *set_to_format(char *str)
 {
     char *new_format = malloc(sizeof(char) * 4);
+    int len = fae_strlen(str);
+    int str_i = len - 1;
 
-    new_format[3] = '\0';
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 2; i++)
         new_format[i] = '0';
-    for (int i = 2; i >= 0 && str[2 - i]; i--)
-        new_format[i] = str[2 - i];
+    for (int i = 2; i >= 0 && str_i >= 0; i--) {
+        new_format[i] = str[str_i];
+        str_i--;
+    }
+    new_format[3] = '\0';
     free(str);
     return new_format;
 }
@@ -51,17 +58,19 @@ void convert_to_binary(char *input, char binary[])
 
 void send_bit(char bit, int second_pid)
 {
-    usleep(100);
+    int *signal0 = detect_signal1();
+    int *signal1 = detect_signal2();
+
+    usleep(50);
     if (bit == '0') {
         kill(second_pid, SIGUSR1);
-        printf("%c", bit);
-        while(second_pid != *detect_signal1())
+        while(second_pid != *signal0)
             pause();
+        *signal0 = 0;
     } else {
         kill(second_pid, SIGUSR2);
-        printf("%c", bit);
-        while(second_pid != *detect_signal2())
+        while(second_pid != *signal1)
             pause();
+        *signal1 = 0;
     }
-    printf("\n");
 }

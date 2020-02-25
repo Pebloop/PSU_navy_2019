@@ -23,25 +23,19 @@ static char *receive_coordinate_in_deci(void)
     char *binary_number = malloc(sizeof(char) * 4);
     int *signal0 = detect_signal1();
     int *signal1 = detect_signal2();
+    int got = 0;
 
     binary_number[3] = '\0';
-    *signal0 = 0;
-    *signal1 = 0;
     for (int i = 0; i < 3; i++) {
         while(!(*signal0) && !(*signal1))
             pause();
-        if (*signal0) {
-            binary_number[i] = '0';
-            kill(*ennemy_pid(), SIGUSR1);
-        }
-        else {
-            binary_number[i] = '1';
-            kill(*ennemy_pid(), SIGUSR2);
-        }
+        got = (*signal0) ? 0 : 1;
         *signal0 = 0;
         *signal1 = 0;
+        binary_number[i] = got + '0';
+        usleep(100);
+        !got ? kill(*ennemy_pid(), SIGUSR1) : kill(*ennemy_pid(), SIGUSR2);
     }
-    printf("%s\n", binary_number);
     return binary_number;
 }
 
@@ -50,6 +44,8 @@ char *get_coordinate(void)
     char *coordinate = malloc(sizeof(char) * 3);
     char *data = 0;
 
+    *detect_signal1() = 0;
+    *detect_signal2() = 0;
     coordinate[2] = '\0';
     for (int i = 0; i < 2; i++) {
         data = receive_coordinate_in_deci();

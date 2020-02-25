@@ -15,11 +15,13 @@
 
 int player_two(int first_pid)
 {
+    int *signal = detect_signal1();
+
     usleep(100);
     kill(first_pid, SIGUSR1);
-    while (*detect_signal1() == 0) {
+    while ((*signal) == 0)
         pause();
-    }
+    *signal = 0;
     usleep(100);
     kill(first_pid, SIGUSR1);
     fae_put("successfully connected\n\n");
