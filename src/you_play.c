@@ -22,6 +22,11 @@ int you_play(cell_t (*their_board)[8], int second_pid)
         return (84);
     send_coordinates(input, *ennemy_pid());
     hit = receive_result_of_strike(second_pid);
+    fae_put("%s: ", input);
+    if (hit)
+        fae_put("hit\n\n");
+    else
+        fae_put("missed\n\n");
     update_board(their_board, input, hit);
     free(input);
     return (0);
@@ -32,7 +37,7 @@ int get_input(char **str)
     int correct_input = 0;
 
     while (!correct_input) {
-        fae_put("\nattack: ");
+        fae_put("attack: ");
         *str = get_next_line(0);
         if (*str == NULL)
             return (84);

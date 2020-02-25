@@ -20,6 +20,11 @@ int they_play(cell_t (*your_board)[8], int second_pid)
     fae_put("waiting for enemy's attack...\n");
     coordinates = get_coordinate();
     hit = detect_hit(your_board, coordinates);
+    fae_put("%s: ", coordinates);
+    if (hit)
+        fae_put("hit\n\n");
+    else
+        fae_put("missed\n\n");
     update_board(your_board, coordinates, hit);
     send_result_of_strike(hit, second_pid);
     free(coordinates);
