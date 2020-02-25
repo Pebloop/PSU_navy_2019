@@ -38,7 +38,7 @@ int detect_victory(cell_t (*player)[8])
         for (int j = 0; j < 8; j++)
             hits += (player[i][j] == HIT);
     }
-    if (hits < 8)
+    if (hits < 14)
         return (0);
     return (1);
 }
