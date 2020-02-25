@@ -21,7 +21,7 @@ int navy(cell_t (*player)[8], int turn, int second_pid)
         } else {
             they_play(player, second_pid);
             winner = detect_victory(player);
-            winner != 0 ? winner + 1 : winner;
+            winner = (winner == 1) ? 2 : 0;
         }
         turn = !turn;
     }
@@ -43,10 +43,10 @@ int detect_victory(cell_t (*player)[8])
     return (1);
 }
 
-void display_winner(int status)
+void display_winner(int winner)
 {
-    if (status == 1)
+    if (winner == 1)
         fae_putstr("I won\n");
-    if (status == 2)
+    if (winner == 2)
         fae_putstr("Enemy won\n");
 }

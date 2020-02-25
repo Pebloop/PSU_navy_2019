@@ -50,7 +50,7 @@ int player_two(int first_pid);
 // navy.c
 int navy(cell_t (*player)[8], int turn, int second_pid);
 int detect_victory();
-void display_winner(int status);
+void display_winner(int winner);
 
 // display_grid.c
 void display_grid(cell_t (*grid)[8]);
