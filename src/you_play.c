@@ -57,7 +57,7 @@ int receive_result_of_strike(int second_pid)
     int *signal1 = detect_signal2();
     int hit = 0;
 
-    while(!(*signal0) && !(*signal1))
+    while (!(*signal0) && !(*signal1))
         pause();
     usleep(100);
     if (*signal0) {

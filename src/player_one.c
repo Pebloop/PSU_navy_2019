@@ -20,14 +20,14 @@ int player_one(void)
     int *signal1 = detect_signal1();
 
     fae_put("waiting for enemy connection...\n");
-    while(!second_pid) {
+    while (!second_pid) {
         pause();
         second_pid = *signal1;
     }
     *signal1 = 0;
     usleep(100);
     kill(second_pid, SIGUSR1);
-    while(second_pid != *detect_signal1())
+    while (second_pid != *detect_signal1())
         pause();
     *signal1 = 0;
     fae_put("\nenemy connected\n\n");

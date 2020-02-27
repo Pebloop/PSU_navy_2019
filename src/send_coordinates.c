@@ -64,12 +64,12 @@ void send_bit(char bit, int second_pid)
     usleep(50);
     if (bit == '0') {
         kill(second_pid, SIGUSR1);
-        while(second_pid != *signal0)
+        while (second_pid != *signal0)
             pause();
         *signal0 = 0;
     } else {
         kill(second_pid, SIGUSR2);
-        while(second_pid != *signal1)
+        while (second_pid != *signal1)
             pause();
         *signal1 = 0;
     }

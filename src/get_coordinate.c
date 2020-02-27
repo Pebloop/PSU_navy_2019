@@ -27,7 +27,7 @@ static char *receive_coordinate_in_deci(void)
 
     binary_number[3] = '\0';
     for (int i = 0; i < 3; i++) {
-        while(!(*signal0) && !(*signal1))
+        while (!(*signal0) && !(*signal1))
             pause();
         got = (*signal0) ? 0 : 1;
         *signal0 = 0;
